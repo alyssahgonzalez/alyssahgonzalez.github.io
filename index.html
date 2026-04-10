@@ -1,0 +1,276 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Source+Sans+3:wght@300;400;500&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .site { font-family: 'Source Sans 3', sans-serif; font-weight: 400; color: var(--color-text-primary); max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+  nav { display: flex; justify-content: space-between; align-items: center; padding-bottom: 2rem; border-bottom: 0.5px solid var(--color-border-tertiary); margin-bottom: 3.5rem; }
+
+  .nav-name { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 400; letter-spacing: 0.02em; }
+
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a { font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-secondary); text-decoration: none; cursor: pointer; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--color-text-primary); }
+
+  .section { display: none; animation: fadeIn 0.3s ease; }
+  .section.visible { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+  .hero { margin-bottom: 3rem; }
+  .hero-label { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-text-secondary); margin-bottom: 1rem; }
+  .hero-name { font-family: 'Playfair Display', serif; font-size: 52px; font-weight: 400; line-height: 1.1; margin-bottom: 1.5rem; }
+  .hero-name span { display: block; }
+  .hero-divider { width: 40px; height: 2px; background: var(--color-text-primary); margin-bottom: 1.5rem; }
+  .hero-tagline { font-size: 17px; font-weight: 300; line-height: 1.7; color: var(--color-text-secondary); max-width: 540px; }
+
+  .bio-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 4rem; margin-top: 2.5rem; }
+  .bio-text p { font-size: 16px; line-height: 1.8; color: var(--color-text-secondary); margin-bottom: 1.2rem; }
+  .bio-text p:last-child { margin-bottom: 0; }
+
+  .bio-sidebar {}
+  .sidebar-block { margin-bottom: 2rem; }
+  .sidebar-label { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-text-tertiary); margin-bottom: 0.75rem; }
+  .sidebar-item { font-size: 14px; line-height: 1.6; color: var(--color-text-secondary); margin-bottom: 0.4rem; }
+  .sidebar-item strong { font-weight: 500; color: var(--color-text-primary); display: block; font-size: 13px; }
+
+  .section-header { margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .section-header h2 { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 400; }
+  .section-header p { font-size: 15px; color: var(--color-text-secondary); margin-top: 0.5rem; line-height: 1.6; }
+
+  .research-item { padding: 1.75rem 0; border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .research-item:last-child { border-bottom: none; }
+  .research-tag { display: inline-block; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text-secondary); background: var(--color-background-secondary); border: 0.5px solid var(--color-border-tertiary); padding: 3px 10px; border-radius: 2px; margin-bottom: 0.75rem; }
+  .research-title { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 400; margin-bottom: 0.75rem; line-height: 1.3; }
+  .research-desc { font-size: 15px; line-height: 1.75; color: var(--color-text-secondary); }
+  .research-meta { margin-top: 0.75rem; font-size: 13px; color: var(--color-text-tertiary); }
+
+  .brief-card { background: var(--color-background-secondary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 2rem; margin-bottom: 1.5rem; }
+  .brief-card h3 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 400; margin-bottom: 0.5rem; }
+  .brief-card .brief-sub { font-size: 13px; color: var(--color-text-secondary); margin-bottom: 1.25rem; letter-spacing: 0.02em; }
+  .brief-card p { font-size: 15px; line-height: 1.75; color: var(--color-text-secondary); margin-bottom: 1rem; }
+  .brief-recs { margin-top: 1.25rem; }
+  .brief-recs-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text-tertiary); margin-bottom: 0.75rem; }
+  .brief-rec { display: flex; gap: 0.75rem; margin-bottom: 0.6rem; font-size: 14px; line-height: 1.6; color: var(--color-text-secondary); }
+  .brief-rec-num { font-weight: 500; color: var(--color-text-primary); min-width: 18px; }
+
+  .cv-section { margin-bottom: 2.5rem; }
+  .cv-section-title { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-text-tertiary); margin-bottom: 1.25rem; padding-bottom: 0.5rem; border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .cv-row { display: grid; grid-template-columns: 140px 1fr; gap: 1.5rem; margin-bottom: 1.25rem; }
+  .cv-year { font-size: 13px; color: var(--color-text-tertiary); padding-top: 2px; }
+  .cv-content h4 { font-size: 15px; font-weight: 500; margin-bottom: 0.2rem; }
+  .cv-content p { font-size: 14px; color: var(--color-text-secondary); line-height: 1.6; }
+
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
+  .contact-card { background: var(--color-background-secondary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1.5rem; }
+  .contact-card-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text-tertiary); margin-bottom: 0.5rem; }
+  .contact-card-value { font-size: 15px; font-weight: 500; }
+  .contact-note { margin-top: 2rem; font-size: 14px; line-height: 1.7; color: var(--color-text-secondary); max-width: 480px; }
+</style>
+
+<div class="site">
+  <nav>
+    <div class="nav-name">Alyssah Nicole Gonzalez</div>
+    <div class="nav-links">
+      <a class="active" onclick="show('bio', this)">About</a>
+      <a onclick="show('research', this)">Research</a>
+      <a onclick="show('brief', this)">Policy Brief</a>
+      <a onclick="show('cv', this)">CV</a>
+      <a onclick="show('contact', this)">Contact</a>
+    </div>
+  </nav>
+
+  <div id="bio" class="section visible">
+    <div class="hero">
+      <div class="hero-label">PhD Candidate · University of Texas at Austin</div>
+      <h1 class="hero-name">
+        <span>Alyssah</span>
+        <span>Nicole Gonzalez</span>
+      </h1>
+      <div class="hero-divider"></div>
+      <p class="hero-tagline">Sociologist and applied researcher studying school safety, institutional threat, and criminal justice policy in the wake of mass shootings.</p>
+    </div>
+
+    <div class="bio-grid">
+      <div class="bio-text">
+        <p>I am a doctoral candidate in Sociology at the University of Texas at Austin, where my research sits at the intersection of education policy, school safety, and criminal justice. My dissertation examines how the 2022 Uvalde school shooting shaped institutional responses across media, school leadership, and law enforcement.</p>
+        <p>My work draws on mixed methods — content analysis of nearly 300 news articles, in-depth interviews with 60 Texas high school principals, and interviews with 15 school-based law enforcement officers — to understand how safety, threat, and accountability are constructed and enacted at the institutional level.</p>
+        <p>I am committed to translating rigorous sociological research into actionable policy recommendations for schools, state agencies, and communities navigating the aftermath of gun violence.</p>
+      </div>
+
+      <div class="bio-sidebar">
+        <div class="sidebar-block">
+          <div class="sidebar-label">Affiliation</div>
+          <div class="sidebar-item"><strong>University of Texas at Austin</strong>Department of Sociology</div>
+        </div>
+        <div class="sidebar-block">
+          <div class="sidebar-label">Research areas</div>
+          <div class="sidebar-item">School safety & gun violence</div>
+          <div class="sidebar-item">Criminal justice policy</div>
+          <div class="sidebar-item">Institutional threat assessment</div>
+          <div class="sidebar-item">Qualitative & applied methods</div>
+        </div>
+        <div class="sidebar-block">
+          <div class="sidebar-label">Expected graduation</div>
+          <div class="sidebar-item">December 2027</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="research" class="section">
+    <div class="section-header">
+      <h2>Research</h2>
+      <p>My dissertation comprises three interrelated studies on the social and institutional dimensions of school safety following the Uvalde shooting.</p>
+    </div>
+
+    <div class="research-item">
+      <div class="research-tag">Chapter 1 · Content Analysis</div>
+      <div class="research-title">Media Framing of Uvalde: Political and Social Discourse Across 295 Articles</div>
+      <p class="research-desc">A systematic content analysis of 295 news articles from three major outlets examining how the Uvalde shooting was constructed politically, socially, and institutionally in public discourse. This chapter maps the dominant frames, silences, and contested narratives that shaped the policy environment following the shooting.</p>
+      <div class="research-meta">N = 295 articles · Three news sources · Mixed methods content analysis</div>
+    </div>
+
+    <div class="research-item">
+      <div class="research-tag">Chapter 2 · Principal Interviews</div>
+      <div class="research-title">Safety and Institutional Threat: How Texas High School Principals Understand Their Role</div>
+      <p class="research-desc">Based on 60 in-depth interviews with Texas high school principals, this chapter examines how school leaders conceptualize safety, navigate institutional threat, and balance competing demands from communities, law enforcement, and state policy following Uvalde. Currently in preparation for peer-reviewed publication.</p>
+      <div class="research-meta">N = 60 interviews · Texas high school principals · Qualitative analysis</div>
+    </div>
+
+    <div class="research-item">
+      <div class="research-tag">Chapter 3 · Law Enforcement Interviews</div>
+      <div class="research-title">Training, Accountability, and the School Resource Officer After Uvalde</div>
+      <p class="research-desc">Drawing on interviews with 15 school-based law enforcement officers in Texas, this chapter investigates how officers understand their training, safety responsibilities, and accountability structures — and how Uvalde reshaped professional identity and institutional expectations in this role.</p>
+      <div class="research-meta">N = 15 interviews · Texas school-based law enforcement · Qualitative analysis</div>
+    </div>
+  </div>
+
+  <div id="brief" class="section">
+    <div class="section-header">
+      <h2>Policy Brief</h2>
+      <p>Translating dissertation research into recommendations for policymakers, school leaders, and state agencies.</p>
+    </div>
+
+    <div class="brief-card">
+      <h3>What Texas School Leaders Need After Uvalde</h3>
+      <div class="brief-sub">Policy Brief · School Safety · Based on 60 Principal Interviews · University of Texas at Austin</div>
+      <p>Three years after the Uvalde massacre, Texas school principals continue to navigate significant gaps between state safety mandates and the practical, emotional, and institutional realities of leading schools under threat. This brief presents findings from 60 in-depth interviews with Texas high school principals conducted as part of ongoing dissertation research.</p>
+      <p>Principals consistently described a safety policy environment that prioritizes compliance and physical infrastructure over the relational, mental health, and training dimensions they identified as most critical. Many reported feeling unsupported by state guidance and unclear about accountability expectations for school-based law enforcement on their campuses.</p>
+      <div class="brief-recs">
+        <div class="brief-recs-label">Key recommendations</div>
+        <div class="brief-rec"><span class="brief-rec-num">1.</span><span>The Texas Education Agency should develop clearer guidance on principal roles in coordinating with school-based law enforcement, including defined accountability structures post-Uvalde.</span></div>
+        <div class="brief-rec"><span class="brief-rec-num">2.</span><span>TCOLE training requirements for school-based law enforcement should be updated to reflect lessons from Uvalde, with mandatory scenario-based preparation for active threat response.</span></div>
+        <div class="brief-rec"><span class="brief-rec-num">3.</span><span>State funding for school safety should include dedicated resources for principal professional development in threat assessment, not only physical security infrastructure.</span></div>
+        <div class="brief-rec"><span class="brief-rec-num">4.</span><span>Ongoing qualitative research into school leader experiences should be integrated into TEA's school safety review processes to ensure policy reflects on-the-ground realities.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="cv" class="section">
+    <div class="section-header">
+      <h2>Curriculum Vitae</h2>
+    </div>
+
+    <div class="cv-section">
+      <div class="cv-section-title">Education</div>
+      <div class="cv-row">
+        <div class="cv-year">2022 – 2027</div>
+        <div class="cv-content">
+          <h4>Ph.D. in Sociology</h4>
+          <p>University of Texas at Austin<br>Dissertation: School Safety, Institutional Threat, and the Legacy of Uvalde</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cv-section">
+      <div class="cv-section-title">Research</div>
+      <div class="cv-row">
+        <div class="cv-year">In progress</div>
+        <div class="cv-content">
+          <h4>Dissertation: Three-chapter mixed methods study</h4>
+          <p>Content analysis (N=295), principal interviews (N=60), law enforcement interviews (N=15)</p>
+        </div>
+      </div>
+      <div class="cv-row">
+        <div class="cv-year">2020</div>
+        <div class="cv-content">
+          <h4>Peer-reviewed publication</h4>
+          <p>First-authored journal article · Details available upon request</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cv-section">
+      <div class="cv-section-title">Methods & skills</div>
+      <div class="cv-row">
+        <div class="cv-year">Qualitative</div>
+        <div class="cv-content">
+          <p>In-depth interviewing · Content analysis · Qualitative software (NVivo / ATLAS.ti) · Thematic coding</p>
+        </div>
+      </div>
+      <div class="cv-row">
+        <div class="cv-year">Quantitative</div>
+        <div class="cv-content">
+          <p>Statistical analysis · Data analysis · Survey design</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cv-section">
+      <div class="cv-section-title">Conferences & presentations</div>
+      <div class="cv-row">
+        <div class="cv-year">Aug 2026</div>
+        <div class="cv-content">
+          <h4>American Sociological Association Annual Meeting</h4>
+          <p>New York, NY</p>
+        </div>
+      </div>
+      <div class="cv-row">
+        <div class="cv-year">Sep 2026</div>
+        <div class="cv-content">
+          <h4>Association for Public Policy Analysis and Management</h4>
+          <p>Boston, MA</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="contact" class="section">
+    <div class="section-header">
+      <h2>Contact</h2>
+      <p>I welcome inquiries from researchers, policymakers, journalists, and practitioners working on school safety, gun violence, and criminal justice policy in Texas.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-card-label">Email</div>
+        <div class="contact-card-value">alyssah.gonzalez@utexas.edu</div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-label">Institution</div>
+        <div class="contact-card-value">University of Texas at Austin</div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-label">Department</div>
+        <div class="contact-card-value">Department of Sociology</div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-label">Location</div>
+        <div class="contact-card-value">Austin, Texas</div>
+      </div>
+    </div>
+
+    <p class="contact-note">I am available for media commentary on school safety policy, legislative testimony, and expert consultation. I am also open to research collaborations with practitioners and policymakers in the Texas education and criminal justice space.</p>
+  </div>
+</div>
+
+<script>
+function show(id, el) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('visible'));
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  document.getElementById(id).classList.add('visible');
+  el.classList.add('active');
+}
+</script>
